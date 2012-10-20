@@ -2,7 +2,7 @@
 
 Name: odamex
 Summary: Odamex is a free and open source port for the classic first-person-shooter Doom
-Version: 0.6.1
+Version: 0.6.0
 Release: %mkrel 1
 License: GPL
 Group:  Games/Arcade  
