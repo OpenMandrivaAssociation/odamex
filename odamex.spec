@@ -8,7 +8,6 @@ License: GPL
 Group:  Games/Arcade  
 URL: http://odamex.net/
 Source0: odamex-src-0.6.1.tar.bz2
-Patch0: odamex-0.4.2-DESTDIR.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: make autoconf automake gcc gcc-c++
 
@@ -26,7 +25,6 @@ personal configuration, gameplay options, and editing features.
 
 %prep
 %setup -q -n odamex-src-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS"
