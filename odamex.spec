@@ -2,19 +2,18 @@
 
 Name: odamex
 Summary: Odamex is a free and open source port for the classic first-person-shooter Doom
-Version: 0.4.2
-Release: 15.37
+Version: 0.6.1
+Release: %mkrel 1
 License: GPL
-Group:  Amusements/Games/Action/Shoot  
+Group:  Games/Arcade  
 URL: http://odamex.net/
-Source0: odamex-src-0.4.2.tar.bz2
-Source1: freedoom-iwad-0.6.2.zip
+Source0: odamex-src-0.6.1.tar.bz2
 Patch0: odamex-0.4.2-DESTDIR.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: make autoconf automake gcc gcc-c++
-%if %suse_version > 1020
+
 BuildRequires: fdupes 
-%endif
+
 BuildRequires: SDL-devel SDL_mixer-devel audiofile-devel
 BuildRequires: glibc-devel libstdc++-devel libmikmod-devel xorg-x11-devel unzip wxGTK-devel
 
@@ -24,9 +23,9 @@ Odamex's goal is to emulate the feel of and retain many aspects of the original
 Doom executables while offering a broader expanse of security features,
 personal configuration, gameplay options, and editing features.
 
-%debug_package
+
 %prep
-%setup -q -n odamex-src-0.4.2
+%setup -q -n odamex-src-%{version}
 %patch0 -p1
 
 %build
@@ -37,18 +36,7 @@ export CXXFLAGS="$RPM_OPT_FLAGS"
 %install
 %makeinstall
 
-%__cp %{buildroot}%{_datadir}/doom/odamex.wad %{buildroot}%{_bindir}/odamex.wad
-
-pushd %{buildroot}%{_datadir}/doom/
-%__unzip -o "%{SOURCE1}"
-popd
-
-%__mv  %{buildroot}%{_datadir}/doom/freedoom-iwad-0.6.2/*.wad %{buildroot}%{_datadir}/doom/
-%__rm -rf  %{buildroot}%{_datadir}/doom/freedoom-iwad-0.6.2
-
-%if %suse_version > 1020
-%fdupes -s %{buildroot}
-%endif
+%__cp %{buildroot}%{_datadir}/doom/odamex.wad %{buildroot}%{_gamesbindir}/odamex.wad
 
 %clean
 rm -fr %buildroot
@@ -56,6 +44,6 @@ rm -fr %buildroot
 %files
 %defattr(-,root,root)
 %{_bindir}/*
-%dir %{_datadir}/doom
-%{_datadir}/doom/*.wad
+%dir %{_gamesdatadir}/doom
+%{_gamesdatadir}/doom/*.wad
 
