@@ -7,7 +7,7 @@ Release: %mkrel 1
 License: GPL
 Group:  Games/Arcade  
 URL: http://odamex.net/
-Source0: odamex-src-0.6.1.tar.bz2
+Source0: odamex-src-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: make autoconf automake gcc gcc-c++
 
