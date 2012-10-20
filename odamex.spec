@@ -15,7 +15,7 @@ BuildRequires: make autoconf automake gcc gcc-c++
 BuildRequires: fdupes 
 
 BuildRequires: SDL-devel SDL_mixer-devel audiofile-devel
-BuildRequires: glibc-devel libstdc++-devel libmikmod-devel xorg-x11-devel unzip wxGTK-devel
+BuildRequires: glibc-devel libstdc++-devel libmikmod-devel X11-devel unzip wxGTK-devel
 
 %description
 Odamex is a free and open source port for the classic first-person-shooter Doom.
@@ -36,7 +36,7 @@ export CXXFLAGS="$RPM_OPT_FLAGS"
 %install
 %makeinstall
 
-%__cp %{buildroot}%{_datadir}/doom/odamex.wad %{buildroot}%{_gamesbindir}/odamex.wad
+%__cp %{buildroot}%{_datadir}/doom/odamex.wad %{buildroot}%{_gamesdatadir}/odamex.wad
 
 %clean
 rm -fr %buildroot
