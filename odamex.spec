@@ -32,16 +32,32 @@ export CXXFLAGS="$RPM_OPT_FLAGS"
 %__make
 
 %install
-%makeinstall
+make install INSTALLDIR=%{buildroot}%{_gamesbindir}/ RESDIR=%{buildroot}%{_gamesdatadir}/
 
-%__cp %{buildroot}%{_datadir}/doom/odamex.wad %{buildroot}%{_gamesdatadir}/odamex.wad
+# %__cp %{buildroot}%{_datadir}/doom/odamex.wad %{buildroot}%{_gamesdatadir}/odamex.wad
 
 %clean
 rm -fr %buildroot
 
 %files
 %defattr(-,root,root)
-%{_bindir}/*
+%{_gamesbindir}/*
 %dir %{_gamesdatadir}/doom
 %{_gamesdatadir}/doom/*.wad
 
+
+
+%changelog
+* Sat Oct 20 2012 Zombie Ryushu <ryushu@mandriva.org> 0.6.0-1mdv2012.0
++ Revision: 819144
+- version tag fix
+- version tag fix
+- Downgrade for gcc
+- remove old patch
+- test upload of latest odamex
+- test upload of latest odamex
+- imported package odamex
+
+
+* Sun Oct 19 2008 - Andrea Florio <andrea@opensuse.org> 0.4.2
+- New Package
